@@ -1,0 +1,31 @@
+package pl.sda;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/addCookie")
+public class AddCookieController extends HttpServlet {
+
+    private static String LOGIN_COOKIE_KEY = "login";
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        String loginValue = req.getParameter("login");
+
+        Cookie cookieLogin = new Cookie(LOGIN_COOKIE_KEY, loginValue);
+        cookieLogin.setMaxAge(minutesToSeconds(2));
+        resp.addCookie(cookieLogin);
+
+        resp.sendRedirect(req.getContextPath() + "/home");
+    }
+
+    private int minutesToSeconds(int minutes) {
+        return minutes * 60;
+    }
+}
