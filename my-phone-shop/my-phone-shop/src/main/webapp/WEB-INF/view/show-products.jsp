@@ -9,7 +9,6 @@
 </head>
 <body>
 <%@include file="/WEB-INF/component/header.jsp"%>
-<div class="col-md-2">Filtry</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2 sidebar">Tutaj będzie filtr</div>
