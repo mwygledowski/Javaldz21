@@ -1,11 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Marcin
-  Date: 09.02.2020
-  Time: 10:28
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
@@ -14,17 +8,36 @@
     <title>SDA shop</title>
 </head>
 <body>
-<div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>
-    <p>Bootstrap is the most popular HTML, CSS...</p>
+<%@include file="/WEB-INF/component/header.jsp"%>
+<div class="col-md-2">Filtry</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar">Tutaj będzie filtr</div>
+        <div class="col-md-10 offset-md-2 content">
+            <c:forEach items="${productsList}" var="product">
+                <div class="row">
+                    <div class="col-md-2"><img src="${product.imagePath}" width="134" height="192"/></div>
+                    <div class="col-md-5">
+                        <h3><a href="" style="color: #b6b8b6">${product.brand} ${product.model}</a></h3>
+                        <h6>System operacyjny: ${product.operatingSystem}</h6>
+                        <h6>Przednia kamera: ${product.primaryCameraMp}</h6>
+                        <h6>Tylna kamera: ${product.secondaryCameraMp}</h6>
+                    </div>
+                    <fmt:setLocale value="pl_PL"/>
+                    <div class="col-md-3"><fmt:formatNumber type="currency" minFractionDigits="2">
+                        ${product.price}</fmt:formatNumber>
+                        <form action="" method="post">
+                            <button type="button" class="btn btn-primary">Do koszyka</button>
+                        </form>
+                        <form action="" method="post">
+                            <button type="button" class="btn btn-primary">Kup teraz</button>
+                        </form>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
 </div>
-<ol>
-    <c:forEach items="${productsList}" var="product">
-        <li>${product}</li>
-
-    </c:forEach>
-</ol>
-
 
 
 <script src="webjars/jquery/3.4.1/jquery.min.js"/>
