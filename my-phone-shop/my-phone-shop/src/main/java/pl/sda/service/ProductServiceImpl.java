@@ -27,4 +27,9 @@ public class ProductServiceImpl implements ProductService {
         }
         return products;
     }
+
+    @Override
+    public Product getProductById(Long id) {
+        return mapToProduct(productDao.getProductById(id), imageDao.getImagePath(id));
+    }
 }

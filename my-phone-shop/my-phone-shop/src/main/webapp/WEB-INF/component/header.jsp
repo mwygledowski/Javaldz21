@@ -12,7 +12,7 @@
             <a class="navbar-brand" href="#">SDA Shop</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Koszyk</a></li>
+            <li><a href="/show-cart">Koszyk</a></li>
             <li><a href="#">Zaloguj</a></li>
         </ul>
     </div>

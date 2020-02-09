@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-2"><img src="${product.imagePath}" width="134" height="192"/></div>
                     <div class="col-md-5">
-                        <h3><a href="" style="color: #b6b8b6">${product.brand} ${product.model}</a></h3>
+                        <h3><a href="/show-product?id=${product.id}" style="color: #b6b8b6">${product.brand} ${product.model}</a></h3>
                         <h6>System operacyjny: ${product.operatingSystem}</h6>
                         <h6>Przednia kamera: ${product.primaryCameraMp}</h6>
                         <h6>Tylna kamera: ${product.secondaryCameraMp}</h6>
@@ -26,8 +26,8 @@
                     <fmt:setLocale value="pl_PL"/>
                     <div class="col-md-3"><fmt:formatNumber type="currency" minFractionDigits="2">
                         ${product.price}</fmt:formatNumber>
-                        <form action="" method="post">
-                            <button type="button" class="btn btn-primary">Do koszyka</button>
+                        <form action="/add-to-cart" method="post">
+                            <button type="submit" class="btn btn-primary" name="id" value="${product.id}">Do koszyka</button>
                         </form>
                         <form action="" method="post">
                             <button type="button" class="btn btn-primary">Kup teraz</button>

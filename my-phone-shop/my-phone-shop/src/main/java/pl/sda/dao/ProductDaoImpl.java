@@ -1,6 +1,7 @@
 package pl.sda.dao;
 
 import pl.sda.entity.ProductEntity;
+import pl.sda.model.Product;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -20,8 +21,15 @@ public class ProductDaoImpl implements ProductDao {
         return productEntities;
     }
 
+    @Override
+    public ProductEntity getProductById(Long id) {
+        return productEntities.stream()
+                .filter(x->x.getId().equals(id))
+                .findFirst().get();
+    }
+
     private static List<ProductEntity> loadMockData() {
-        Long idMock = 1L;
+        Long idMock = 0L;
         ProductEntity product1 = ProductEntity.builder()
                 .id(++idMock)
                 .brand(SAMSUNG)
