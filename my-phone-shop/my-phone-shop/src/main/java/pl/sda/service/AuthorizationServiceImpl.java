@@ -22,9 +22,20 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         }
     }
 
+
+    @Override
+    public void logout(HttpServletRequest req) {
+
+        req.getSession().setAttribute(IS_AUTHORIZE,false);
+    }
+
+
+
     @Override
     public boolean isAuthorize(HttpServletRequest req) {
 
         return false;
     }
+
+
 }

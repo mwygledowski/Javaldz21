@@ -11,7 +11,9 @@
 <%@include file="/WEB-INF/component/header.jsp"%>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 sidebar">Tutaj będzie filtr</div>
+        <div class="col-md-2 sidebar">
+            <%@include file="/WEB-INF/component/filter.jsp"%>
+        </div>
         <div class="col-md-10 offset-md-2 content">
             <c:forEach items="${productsList}" var="product">
                 <div class="row">

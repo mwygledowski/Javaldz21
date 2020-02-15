@@ -27,6 +27,26 @@
     <button type="submit" class="btn btn-primary">Zaloguj</button>
 </form>
 
+<c:if test="${invalidRegistration}">
+    <p style="color: red">Użytkownik istnieje w bazie danych</p>
+</c:if>
+
+<form action="/registration" method="post">
+    <label for="newLogin">login</label>
+    <input type="text" name="login" id="newLogin">
+
+    <label for="newPassword">hasło</label>
+    <input type="password" name="password" id="newPassword">
+
+    <label for="firstName">imię</label>
+    <input type="text" name="firstName" id="firstName">
+
+    <label for="lastName">nazwisko</label>
+    <input type="text" name="lastName" id="lastName">
+
+    <button type="submit" class="btn btn-primary">Zarejestruj</button>
+</form>
+
 <script src="webjars/jquery/3.4.1/jquery.min.js"/>
 <script src="webjars/bootstrap/3.4.0/js/bootstrap.min.js"/>
 </body>

@@ -35,6 +35,11 @@ public class CartServiceImpl implements CartService {
     public List<Product> getCart(HttpServletRequest req) {
         List<Long> cart = (List<Long>) req.getSession().getAttribute(CART);
         List<Product> cartProducts = new ArrayList<>();
+
+        if(cart==null){
+            return Collections.emptyList();
+        }
+
         for(Long id : cart){
             cartProducts.add(productService.getProductById(id));
         }
