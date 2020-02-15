@@ -1,8 +1,9 @@
 package pl.sda.controller;
 
-
 import pl.sda.service.CartService;
 import pl.sda.service.CartServiceImpl;
+import pl.sda.service.OrderService;
+import pl.sda.service.OrderServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,21 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/remove-from-cart")
-public class RemoveFromCartController extends HttpServlet {
+@WebServlet("/buy-and-pay")
+public class BuyAndPayController extends HttpServlet {
 
-    private CartService cartService = new CartServiceImpl();
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.valueOf(req.getParameter("id"));
-        cartService.removeFromCart(id, req);
-
-        resp.sendRedirect("/show-cart");
-    }
+    private OrderService orderService = new OrderServiceImpl();
+    private CartService cartService= new CartServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        orderService.order("login", cartService.getCart(req));
+        req.getRequestDispatcher("/WEB-INF/view/end-view.jsp").forward(req,resp);
     }
 }

@@ -27,4 +27,9 @@ public class ShowCartController extends HttpServlet {
         req.setAttribute("totalValue", billService.calculateCartValue(1L, cart));
         req.getRequestDispatcher("/WEB-INF/view/show-cart.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
+    }
 }

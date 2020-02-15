@@ -1,4 +1,4 @@
-<%--
+    <%--
   Created by IntelliJ IDEA.
   User: Marcin
   Date: 09.02.2020
@@ -37,6 +37,9 @@
     </c:forEach>
 
     <div class="row">
+        <form action="/buy-and-pay" method="get">
+            <button type="submit" class="btn btn-primary">Kup i zapłać</button>
+        </form>
        <h3 align="right">
             <fmt:formatNumber type="currency" minFractionDigits="2">
                 ${totalValue}</fmt:formatNumber></h3>

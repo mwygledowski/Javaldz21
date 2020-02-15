@@ -28,8 +28,8 @@
                         <form action="/add-to-cart" method="post">
                             <button type="submit" class="btn btn-primary" name="id" value="${product.id}">Do koszyka</button>
                         </form>
-                        <form action="" method="post">
-                            <button type="button" class="btn btn-primary">Kup teraz</button>
+                        <form action="/buy" method="post">
+                            <button type="submit" class="btn btn-primary"name="id" value="${product.id}">Kup teraz</button>
                         </form>
                     </div>
                 </div>
