@@ -13,7 +13,8 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/show-cart">Koszyk</a></li>
-            <li><a href="#">Zaloguj</a></li>
+            <c:if test="${sessionScope.isAuthorize}"><li><a href="/login">Wyloguj</a></li></c:if>
+            <c:if test="${!sessionScope.isAuthorize}"><li><a href="/login">Zaloguj</a></li></c:if>
         </ul>
     </div>
 </nav>

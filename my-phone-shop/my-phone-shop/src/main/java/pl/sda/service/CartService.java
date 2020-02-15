@@ -9,5 +9,6 @@ public interface CartService {
     void addToCart(Long id, HttpServletRequest req);
     void removeFromCart(Long id, HttpServletRequest req);
     List<Product> getCart(HttpServletRequest req);
+    void removeAllProducts(HttpServletRequest req);
 
 }

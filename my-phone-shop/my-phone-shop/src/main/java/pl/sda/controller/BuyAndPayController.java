@@ -21,6 +21,8 @@ public class BuyAndPayController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         orderService.order("login", cartService.getCart(req));
+        cartService.removeAllProducts(req);
         req.getRequestDispatcher("/WEB-INF/view/end-view.jsp").forward(req,resp);
+
     }
 }
