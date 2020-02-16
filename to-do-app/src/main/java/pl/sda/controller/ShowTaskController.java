@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/show-tasks")
+@WebServlet("/to-do/show-tasks")
 public class ShowTaskController extends HttpServlet {
 
     private TaskService taskService = new TaskService();

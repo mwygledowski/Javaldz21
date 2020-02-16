@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/delete")
+@WebServlet("/to-do/delete")
 public class DeleteTaskController extends HttpServlet {
   private TaskService taskService = new TaskService();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String taskId = req.getParameter("taskId");
         taskService.deleteTask(Long.valueOf(taskId));
-        req.getRequestDispatcher("/show-tasks").forward(req,resp);
+        req.getRequestDispatcher("/to-do/show-tasks").forward(req,resp);
 
     }
 }

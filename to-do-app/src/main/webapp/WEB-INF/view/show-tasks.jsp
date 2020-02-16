@@ -12,10 +12,10 @@
 <html>
 <head>
     <link href="webjars/bootstrap/3.4.0/css/bootstrap.min-jsf.css" rel="stylesheet">
-
     <title>Title</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/component/header.jsp" %>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -40,14 +40,14 @@
             <td>
                 <c:if test="${!task.done}">
 
-                    <form action="/mark-as-done" method="post">
+                    <form action="/to-do/mark-as-done" method="post">
                         <button class="btn btn-success" value="${task.id}" name="taskId">done</button>
                     </form>
 
                 </c:if>
             </td>
             <td>
-                <form action="/delete" method="post">
+                <form action="/to-do/delete" method="post">
                     <button class="btn btn-danger" value="${task.id}" name="taskId">remove</button>
                 </form>
             </td>
@@ -57,7 +57,7 @@
     </c:forEach>
     </tbody>
 </table>
-<form action="/add-task" method="post">
+<form action="/to-do/add-task" method="post">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title"><br>
     <label for="category">Category:</label>

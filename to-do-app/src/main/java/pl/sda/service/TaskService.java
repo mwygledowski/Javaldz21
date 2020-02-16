@@ -4,6 +4,7 @@ package pl.sda.service;
 import pl.sda.model.Category;
 import pl.sda.model.TaskModel;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,10 @@ public class TaskService {
     private static List<TaskModel> tasks = loadMockData();
 
     public void addTask(String login, TaskModel task) {
+        task.setUserLogin(login);
+        task.setId(generateId());
+        task.setCreationDate(LocalDate.now());
+        tasks.add(task);
     }
 
     public void deleteTask(Long taskId) {
@@ -40,8 +45,8 @@ public class TaskService {
         List<TaskModel> mockData = new ArrayList<>();
         TaskModel taskModel = TaskModel.builder()
                 .category(Category.WORK)
-                .creationDate(LocalDateTime.now())
-                .deadline(LocalDateTime.now().plusDays(7))
+                .creationDate(LocalDate.now())
+                .deadline(LocalDate.now().plusDays(7))
                 .description("drink coffee")
                 .title("coffee break")
                 .id(generateId())
@@ -50,8 +55,8 @@ public class TaskService {
                 .build();
         TaskModel taskModel2 = TaskModel.builder()
                 .category(Category.WORK)
-                .creationDate(LocalDateTime.now())
-                .deadline(LocalDateTime.now().plusDays(7))
+                .creationDate(LocalDate.now())
+                .deadline(LocalDate.now().plusDays(7))
                 .description("drink coffee")
                 .title("coffee break")
                 .id(generateId())

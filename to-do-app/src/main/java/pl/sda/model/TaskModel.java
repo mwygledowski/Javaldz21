@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Builder
 @Getter
@@ -14,8 +14,8 @@ public class TaskModel {
     private Long id;
     private String title;
     private Category category;
-    private LocalDateTime creationDate;
-    private LocalDateTime deadline;
+    private LocalDate creationDate;
+    private LocalDate deadline;
     private String description;
     private boolean done;
     private String userLogin;
