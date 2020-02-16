@@ -18,6 +18,7 @@ public class TaskService {
     }
 
     public void deleteTask(Long taskId) {
+        tasks.remove(getTask(taskId));
     }
 
     public List<TaskModel> getTasks(String login) {
@@ -25,6 +26,14 @@ public class TaskService {
     }
 
     public void editTask(String login, TaskModel task) {
+    }
+
+    public void markAsDone(Long id) {
+       TaskModel taskModel = getTask(id);
+       taskModel.setDone(true);
+    }
+    public TaskModel getTask(Long id) {
+        return tasks.stream().filter(task -> task.getId().equals(id)).findFirst().orElse(null);
     }
 
     private static List<TaskModel> loadMockData() {

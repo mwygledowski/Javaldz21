@@ -37,11 +37,48 @@
             <td> ${task.creationDate}</td>
             <td> ${task.deadline}</td>
             <td> ${task.description}</td>
+            <td>
+                <c:if test="${!task.done}">
+
+                    <form action="/mark-as-done" method="post">
+                        <button class="btn btn-success" value="${task.id}" name="taskId">done</button>
+                    </form>
+
+                </c:if>
+            </td>
+            <td>
+                <form action="/delete" method="post">
+                    <button class="btn btn-danger" value="${task.id}" name="taskId">remove</button>
+                </form>
+            </td>
+
         </tr>
         <c:set var="counter" value="${counter+1}"/>
     </c:forEach>
     </tbody>
 </table>
+<form action="/add-task" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title"><br>
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+        <c:forEach items="${categoryList}" var="category">
+            <option value="${category}">${category}</option>
+        </c:forEach>
+
+    </select><br>
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline"><br>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description"><br>
+
+    <button class="btn btn-success" >Add</button>
+
+</form>
+
+</form>
+
 <script src="webjars/jquery/3.4.1/jquery.min.js"/>
 <script src="webjars/bootstrap/3.4.0/js/bootstrap.min.js"/>
 </body>
