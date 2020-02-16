@@ -24,13 +24,12 @@ public class ShowProductsController extends HttpServlet {
 
         String[] brands = req.getParameterMap().get("brand");
 
-
         if (brands == null) {
             req.setAttribute("productsList", productService.getAllProducts());
         } else {
             List<Brand> brandsList = Arrays.asList(brands).stream().map(b -> Brand.valueOf(b)).collect(Collectors.toList());
             req.setAttribute("productsList", productService.getProductsByBrands(brandsList));
-            req.setAttribute("selectedBrands",Arrays.asList(brands).stream().map(b->Brand.valueOf(b)).collect(Collectors.toList()));
+            req.setAttribute("selectedBrands", brandsList);
 
         }
 
